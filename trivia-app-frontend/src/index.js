@@ -20,15 +20,30 @@ getCategories()
 function addNameToCategory(category) {
   categoryContainer.innerHTML += `
   <div class="category-grid-item" id="${category.id}"> ${category.name} </div>`
-  for (let i = 0; i < 2; i++) {
+
+  category.round_of_questions.forEach(question => {
     questionGrid.innerHTML += `
-     <div class="question-grid-item">${category.easy_questions[i].question}</div>
-    `
-  }
-  // category.easy_questions.forEach(q => {
-  //   questionGrid.innerHTML += `
-  //     <div class="question-grid-item">$100</div>
-  //   `
-  // })
+    <div class='question-grid-item' id=${question.id}>${question.question}
+    <br>
+    <button class="trueBtn"> True </button> 
+    <button class="falseBtn"> False </button>
+    </div>`
+    
+  })
+    // const trueBtn = document.querySelectorAll('.trueBtn')
+    // const falseBtn = document.querySelectorAll('.trueBtn')
 
 }
+
+ {
+  questionGrid.addEventListener('click', (e) => {
+    if (e.target.className === 'trueBtn') {
+      if(e.target.innerText === question.correct_answer) {
+        alert("u got it bro")
+      }
+    }
+  })
+
+
+
+
