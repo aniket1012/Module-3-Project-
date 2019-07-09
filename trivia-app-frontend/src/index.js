@@ -19,16 +19,33 @@ getCategories()
 
 function addNameToCategory(category) {
   categoryContainer.innerHTML += `
-  <div class="category-grid-item" id="${category.id}"> ${category.name} </div>`
-  for (let i = 0; i < 2; i++) {
-    questionGrid.innerHTML += `
-     <div class="question-grid-item">${category.easy_questions[i].question}</div>
-    `
-  }
-  // category.easy_questions.forEach(q => {
-  //   questionGrid.innerHTML += `
-  //     <div class="question-grid-item">$100</div>
-  //   `
-  // })
+  <div class="category-grid-item" id="${category.id}"> ${category.name} </div>
+  `
+  // for (let i = 0; i < 5; i++) {
+    category.round_of_questions.forEach(q => {
+      questionGrid.innerHTML += `
+         <div class="question-grid-item" id=${q.id}>${q.question}
+         <br>
+         <button class="trueBtn" data-answer=${q.correct_answer}>True</button>
+         <button class="falseBtn" data-answer=${q.correct_answer}>False</button>
+         </div>
+         `
+    })
+  // const trueBtn = document.querySelectorAll('.trueBtn')
+  // const falseBtn = document.querySelectorAll('.falseBtn')
+} //end addNameToCategory
 
-}
+questionGrid.addEventListener('click', (e) => {
+  if (e.target.className === 'trueBtn') {
+    if(e.target.innerText === e.target.dataset.answer) {
+      alert("truth!!!")
+      console.log("the answer was true and you clicked true");
+    }
+  }
+  if (e.target.className === 'falseBtn') {
+    if(e.target.innerText === e.target.dataset.answer) {
+      alert("FALSE!!!")
+      console.log("the answer was false and you clicked false");
+    }
+  }
+})
