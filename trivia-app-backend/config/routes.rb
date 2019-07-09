@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :users
   resources :scores
-  resources :questions, only: [:index, :create] 
+  resources :questions, only: [:index, :create, :show] 
   resources :rounds
-  resources :categories, only: [:index, :create] 
+  resources :categories, only: [:index, :create, :show] 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
