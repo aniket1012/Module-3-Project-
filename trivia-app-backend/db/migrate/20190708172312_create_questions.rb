@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.string :difficulty
       t.string :question
       t.string :correct_answer
-      t.belongs_to :rounds, foreign_key: true
+      t.belongs_to :round, foreign_key: true
 
       t.timestamps
     end
