@@ -19,6 +19,7 @@ getCategories()
 
 function addNameToCategory(category) {
   categoryContainer.innerHTML += `
+<<<<<<< HEAD
   <div class="category-grid-item" id="${category.id}"> ${category.name} </div>
   `
   // for (let i = 0; i < 5; i++) {
@@ -49,3 +50,33 @@ questionGrid.addEventListener('click', (e) => {
     }
   }
 })
+=======
+  <div class="category-grid-item" id="${category.id}"> ${category.name} </div>`
+
+  category.round_of_questions.forEach(question => {
+    questionGrid.innerHTML += `
+    <div class='question-grid-item' id=${question.id}>${question.question}
+    <br>
+    <button class="trueBtn"> True </button> 
+    <button class="falseBtn"> False </button>
+    </div>`
+    
+  })
+    // const trueBtn = document.querySelectorAll('.trueBtn')
+    // const falseBtn = document.querySelectorAll('.trueBtn')
+
+}
+
+ {
+  questionGrid.addEventListener('click', (e) => {
+    if (e.target.className === 'trueBtn') {
+      if(e.target.innerText === question.correct_answer) {
+        alert("u got it bro")
+      }
+    }
+  })
+
+
+
+
+>>>>>>> aniket
