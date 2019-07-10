@@ -1,29 +1,43 @@
 class Category < ApplicationRecord
     has_many :questions
 
-    def easy_questions
+    def level_one
       self.questions.select do |question|
-          question.difficulty == "easy"
+          question.difficulty == "1"
       end
     end
 
-    def medium_questions
+    def level_two
       self.questions.select do |question|
-          question.difficulty == "medium"
+          question.difficulty == "2"
       end
     end
 
-    def hard_questions
+    def level_three
       self.questions.select do |question|
-          question.difficulty == "hard"
+          question.difficulty == "3"
+      end
+    end
+
+    def level_four
+      self.questions.select do |question|
+          question.difficulty == "4"
+      end
+    end
+
+    def level_five
+      self.questions.select do |question|
+          question.difficulty == "5"
       end
     end
 
     def round_of_questions
       questions = []
-      questions << self.easy_questions.sample(2)
-      questions << self.medium_questions.sample(2)
-      questions << self.hard_questions.sample
+      questions << self.level_one.sample
+      questions << self.level_two.sample
+      questions << self.level_three.sample
+      questions << self.level_four.sample
+      questions << self.level_five.sample
       questions.flatten
     end
 

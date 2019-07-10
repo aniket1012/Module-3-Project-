@@ -21,24 +21,32 @@ function addNameToCategory(category) {
   categoryContainer.innerHTML += `
   <div class="category-grid-item" id="${category.id}"> ${category.name} </div>
   `
-  // for (let i = 0; i < 5; i++) {
-    category.round_of_questions.forEach(q => {
-      questionGrid.innerHTML += `
-         <div class="question-grid-item" id=${q.id}>${q.question}
-          <br>
-          <button class="trueBtn" data-answer=${q.correct_answer}>True</button>
-          <button class="falseBtn" data-answer=${q.correct_answer}>False</button>
-         </div>
-         `
-    })
-  // const trueBtn = document.querySelectorAll('.trueBtn')
-  // const falseBtn = document.querySelectorAll('.falseBtn')
+  category.round_of_questions.forEach(q => {
+    questionGrid.innerHTML += `
+      <div class="question-grid-item" id=${q.id}>
+        <div class="flip-card-inner">
+          <div class="flip-card-front toggle-flip">
+            "$100"
+          </div>
+          <div class="flip-card-back">
+            ${q.question}
+            <br>
+            <button class="trueBtn" data-answer=${q.correct_answer}>True</button>
+            <button class="falseBtn" data-answer=${q.correct_answer}>False</button>
+          </div>
+        </div>
+      </div>
+    `
+  })
 } //end addNameToCategory
+
+
 
 questionGrid.addEventListener('click', (e) => {
   if (e.target.className === 'trueBtn') {
     if(e.target.innerText === e.target.dataset.answer) {
       e.target.parentElement.innerHTML = `<img width="70px" src="./assets/images/green-check.png">`
+      console.log(e.target.parentElement)
       // e.target.parentElement.innerHTML = `<div style="font-size:40px;margin:auto;margin-top:10%;">✅</p>`
     }
   }
