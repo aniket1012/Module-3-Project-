@@ -19,16 +19,15 @@ getCategories()
 
 function addNameToCategory(category) {
   categoryContainer.innerHTML += `
-<<<<<<< HEAD
   <div class="category-grid-item" id="${category.id}"> ${category.name} </div>
   `
   // for (let i = 0; i < 5; i++) {
     category.round_of_questions.forEach(q => {
       questionGrid.innerHTML += `
          <div class="question-grid-item" id=${q.id}>${q.question}
-         <br>
-         <button class="trueBtn" data-answer=${q.correct_answer}>True</button>
-         <button class="falseBtn" data-answer=${q.correct_answer}>False</button>
+          <br>
+          <button class="trueBtn" data-answer=${q.correct_answer}>True</button>
+          <button class="falseBtn" data-answer=${q.correct_answer}>False</button>
          </div>
          `
     })
@@ -39,44 +38,26 @@ function addNameToCategory(category) {
 questionGrid.addEventListener('click', (e) => {
   if (e.target.className === 'trueBtn') {
     if(e.target.innerText === e.target.dataset.answer) {
-      alert("truth!!!")
-      console.log("the answer was true and you clicked true");
+      e.target.parentElement.innerHTML = `<img width="70px" src="./assets/images/green-check.png">`
+      // e.target.parentElement.innerHTML = `<div style="font-size:40px;margin:auto;margin-top:10%;">✅</p>`
     }
   }
   if (e.target.className === 'falseBtn') {
     if(e.target.innerText === e.target.dataset.answer) {
-      alert("FALSE!!!")
-      console.log("the answer was false and you clicked false");
+      e.target.parentElement.innerHTML = `<img width="70px" src="./assets/images/green-check.png">`
+      // e.target.parentElement.innerHTML = `<p style="font-size:40px;margin:auto;">✅</p>`
+    }
+  }
+  if (e.target.className === 'trueBtn') {
+    if(e.target.innerText !== e.target.dataset.answer) {
+      e.target.parentElement.innerHTML = `<img width="95px" src="./assets/images/red-x.png">`
+      // e.target.parentElement.innerText = "Incorrect answer :( ❌"
+    }
+  }
+  if (e.target.className === 'falseBtn') {
+    if(e.target.innerText !== e.target.dataset.answer) {
+      e.target.parentElement.innerHTML = `<img width="95px" src="./assets/images/red-x.png">`
+      // e.target.parentElement.innerText = "Incorrect answer :( ❌"
     }
   }
 })
-=======
-  <div class="category-grid-item" id="${category.id}"> ${category.name} </div>`
-
-  category.round_of_questions.forEach(question => {
-    questionGrid.innerHTML += `
-    <div class='question-grid-item' id=${question.id}>${question.question}
-    <br>
-    <button class="trueBtn"> True </button> 
-    <button class="falseBtn"> False </button>
-    </div>`
-    
-  })
-    // const trueBtn = document.querySelectorAll('.trueBtn')
-    // const falseBtn = document.querySelectorAll('.trueBtn')
-
-}
-
- {
-  questionGrid.addEventListener('click', (e) => {
-    if (e.target.className === 'trueBtn') {
-      if(e.target.innerText === question.correct_answer) {
-        alert("u got it bro")
-      }
-    }
-  })
-
-
-
-
->>>>>>> aniket
