@@ -25,8 +25,8 @@ function addNameToCategory(category) {
     questionGrid.innerHTML += `
       <div class="question-grid-item" id=${q.id}>
         <div class="flip-card-inner">
-          <div class="flip-card-front toggle-flip">
-            "$100"
+          <div class="flip-card-front">
+            $ ${q.difficulty}00
           </div>
           <div class="flip-card-back">
             ${q.question}
@@ -43,6 +43,11 @@ function addNameToCategory(category) {
 
 
 questionGrid.addEventListener('click', (e) => {
+  if (e.target.className === 'flip-card-front') {
+    e.target.style.display = "none";
+    e.target.parentElement.parentElement.className += " toggle-flip"
+    e.target.nextElementSibling.style.display = "block"
+  }
   if (e.target.className === 'trueBtn') {
     if(e.target.innerText === e.target.dataset.answer) {
       e.target.parentElement.innerHTML = `<img width="70px" src="./assets/images/green-check.png">`
