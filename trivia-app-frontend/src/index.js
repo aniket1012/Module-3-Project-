@@ -16,7 +16,7 @@ function getCategories() {
   })
 }
 getCategories()
-
+// something stupy
 function addNameToCategory(category) {
   categoryContainer.innerHTML += `
   <div class="category-grid-item" id="${category.id}"> ${category.name} </div>
